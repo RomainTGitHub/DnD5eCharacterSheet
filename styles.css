@@ -1,0 +1,487 @@
+/* styles.css */
+:root {
+    /* Light Theme Variables */
+    --bg-primary-light: #f8fafc; /* slate-50 */
+    --bg-secondary-light: #ffffff; /* white */
+    --bg-tertiary-light: #f1f5f9; /* slate-100 */
+    --bg-quaternary-light: #e2e8f0; /* slate-200 */
+    --text-primary-light: #0f172a; /* slate-900 */
+    --text-secondary-light: #475569; /* slate-600 */
+    --text-accent-light: #0ea5e9; /* sky-600 */
+    --text-placeholder-light: #94a3b8; /* slate-400 */
+    --border-primary-light: #e2e8f0; /* slate-200 */
+    --border-secondary-light: #cbd5e1; /* slate-300 */
+    --border-tertiary-light: #9ca3af; /* gray-400 */
+    --accent-primary-light: #0ea5e9; /* sky-600 */
+    --accent-secondary-light: #38bdf8; /* sky-500 */
+    --accent-shadow-light: rgba(56, 189, 248, 0.3);
+    --button-primary-bg-light: #0ea5e9; /* sky-600 */
+    --button-primary-text-light: #ffffff; /* white */
+    --button-primary-hover-bg-light: #0284c7; /* sky-700 */
+    --button-secondary-bg-light: #e2e8f0; /* slate-200 */
+    --button-secondary-text-light: #1e293b; /* slate-800 */
+    --button-secondary-hover-bg-light: #cbd5e1; /* slate-300 */
+    --toast-bg-light: #f1f5f9; /* slate-100 */
+    --toast-text-light: #1e293b; /* slate-800 */
+    --modal-overlay-bg-light: rgba(226, 232, 240, 0.8); /* slate-200 with alpha */
+    --dice-button-bg-light: #e2e8f0;
+    --dice-button-text-light: #1e293b;
+    --dice-button-border-light: #cbd5e1;
+    --dice-button-primary-bg-light: #38bdf8;
+    --dice-button-primary-text-light: white;
+    --dice-button-primary-border-light: #0ea5e9;
+    --danger-bg-light: #ef4444; /* red-500 */
+    --danger-text-light: white;
+    --danger-hover-bg-light: #dc2626; /* red-600 */
+
+
+    /* Dark Theme Variables (based on original styles) */
+    --bg-primary-dark: #0f172a; /* slate-900 */
+    --bg-secondary-dark: #1e293b; /* slate-800 */
+    --bg-tertiary-dark: #334155; /* slate-700 */
+    --bg-quaternary-dark: #475569; /* slate-600 */
+    --text-primary-dark: #cbd5e1; /* slate-300 */
+    --text-secondary-dark: #94a3b8; /* slate-400 */
+    --text-accent-dark: #7dd3fc; /* sky-300 */
+    --text-placeholder-dark: #64748b; /* slate-500 */
+    --border-primary-dark: #334155; /* slate-700 */
+    --border-secondary-dark: #475569; /* slate-600 */
+    --border-tertiary-dark: #64748b; /* slate-500 */
+    --accent-primary-dark: #38bdf8; /* sky-500 */
+    --accent-secondary-dark: #7dd3fc; /* sky-300 */
+    --accent-shadow-dark: rgba(56, 189, 248, 0.3);
+    --button-primary-bg-dark: #0ea5e9; /* sky-600 */
+    --button-primary-text-dark: #ffffff; /* white */
+    --button-primary-hover-bg-dark: #0284c7; /* sky-700 */
+    --button-secondary-bg-dark: #334155; /* slate-700 */
+    --button-secondary-text-dark: #e2e8f0; /* slate-200 */
+    --button-secondary-hover-bg-dark: #475569; /* slate-600 */
+    --toast-bg-dark: #334155; /* slate-700 */
+    --toast-text-dark: #e2e8f0; /* slate-200 */
+    --modal-overlay-bg-dark: rgba(15, 23, 42, 0.8); /* slate-900 with alpha */
+    --dice-button-bg-dark: #334155; /* slate-700 */
+    --dice-button-text-dark: #e2e8f0; /* slate-200 */
+    --dice-button-border-dark: #1A202C; /* darker for depth */
+    --dice-button-primary-bg-dark: #38BDF8; /* sky-500 */
+    --dice-button-primary-text-dark: white;
+    --dice-button-primary-border-dark: #0E7490; /* sky-700 */
+    --danger-bg-dark: #c2410c; /* orange-700 */
+    --danger-text-dark: white;
+    --danger-hover-bg-dark: #9a3412; /* orange-800 */
+}
+
+body[data-theme="light"] {
+    --bg-primary: var(--bg-primary-light);
+    --bg-secondary: var(--bg-secondary-light);
+    --bg-tertiary: var(--bg-tertiary-light);
+    --bg-quaternary: var(--bg-quaternary-light);
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --text-accent: var(--text-accent-light);
+    --text-placeholder: var(--text-placeholder-light);
+    --border-primary: var(--border-primary-light);
+    --border-secondary: var(--border-secondary-light);
+    --border-tertiary: var(--border-tertiary-light);
+    --accent-primary: var(--accent-primary-light);
+    --accent-secondary: var(--accent-secondary-light);
+    --accent-shadow: var(--accent-shadow-light);
+    --button-primary-bg: var(--button-primary-bg-light);
+    --button-primary-text: var(--button-primary-text-light);
+    --button-primary-hover-bg: var(--button-primary-hover-bg-light);
+    --button-secondary-bg: var(--button-secondary-bg-light);
+    --button-secondary-text: var(--button-secondary-text-light);
+    --button-secondary-hover-bg: var(--button-secondary-hover-bg-light);
+    --toast-bg: var(--toast-bg-light);
+    --toast-text: var(--toast-text-light);
+    --modal-overlay-bg: var(--modal-overlay-bg-light);
+    --dice-button-bg: var(--dice-button-bg-light);
+    --dice-button-text: var(--dice-button-text-light);
+    --dice-button-border: var(--dice-button-border-light);
+    --dice-button-primary-bg: var(--dice-button-primary-bg-light);
+    --dice-button-primary-text: var(--dice-button-primary-text-light);
+    --dice-button-primary-border: var(--dice-button-primary-border-light);
+    --danger-bg: var(--danger-bg-light);
+    --danger-text: var(--danger-text-light);
+    --danger-hover-bg: var(--danger-hover-bg-light);
+    background-image: linear-gradient(to bottom right, var(--bg-primary), var(--bg-quaternary));
+}
+
+body[data-theme="dark"] {
+    --bg-primary: var(--bg-primary-dark);
+    --bg-secondary: var(--bg-secondary-dark);
+    --bg-tertiary: var(--bg-tertiary-dark);
+    --bg-quaternary: var(--bg-quaternary-dark);
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --text-accent: var(--text-accent-dark);
+    --text-placeholder: var(--text-placeholder-dark);
+    --border-primary: var(--border-primary-dark);
+    --border-secondary: var(--border-secondary-dark);
+    --border-tertiary: var(--border-tertiary-dark);
+    --accent-primary: var(--accent-primary-dark);
+    --accent-secondary: var(--accent-secondary-dark);
+    --accent-shadow: var(--accent-shadow-dark);
+    --button-primary-bg: var(--button-primary-bg-dark);
+    --button-primary-text: var(--button-primary-text-dark);
+    --button-primary-hover-bg: var(--button-primary-hover-bg-dark);
+    --button-secondary-bg: var(--button-secondary-bg-dark);
+    --button-secondary-text: var(--button-secondary-text-dark);
+    --button-secondary-hover-bg: var(--button-secondary-hover-bg-dark);
+    --toast-bg: var(--toast-bg-dark);
+    --toast-text: var(--toast-text-dark);
+    --modal-overlay-bg: var(--modal-overlay-bg-dark);
+    --dice-button-bg: var(--dice-button-bg-dark);
+    --dice-button-text: var(--dice-button-text-dark);
+    --dice-button-border: var(--dice-button-border-dark);
+    --dice-button-primary-bg: var(--dice-button-primary-bg-dark);
+    --dice-button-primary-text: var(--dice-button-primary-text-dark);
+    --dice-button-primary-border: var(--dice-button-primary-border-dark);
+    --danger-bg: var(--danger-bg-dark);
+    --danger-text: var(--danger-text-dark);
+    --danger-hover-bg: var(--danger-hover-bg-dark);
+    background-image: linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary));
+}
+
+/* General body styles using the theme variables */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease, background-image 0.3s ease;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-primary);
+    width: 2.5rem; /* Fixed width for consistency */
+    height: 2.5rem; /* Fixed height for consistency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#theme-toggle:hover {
+    background-color: var(--bg-quaternary);
+    color: var(--text-primary);
+}
+
+#theme-toggle i { /* Style for Font Awesome icon */
+    font-size: 1.25rem; /* Adjust size as needed */
+}
+
+
+/* Header Styles */
+.header-title { color: var(--accent-primary); }
+.header-subtitle { color: var(--text-secondary); }
+
+/* Form Container */
+.form-container { background-color: var(--bg-secondary); }
+
+/* Form Elements */
+.form-label { color: var(--text-accent); }
+.form-label-secondary { color: var(--text-secondary); }
+.form-label-accent { color: var(--accent-primary); }
+.form-border-secondary { border-color: var(--border-secondary); }
+
+.form-input,
+.form-select {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-shadow);
+}
+.form-input::placeholder { color: var(--text-placeholder); }
+select option { background-color: var(--bg-secondary); color: var(--text-primary); }
+
+
+/* Sheet Display */
+.sheet-display-container { background-color: var(--bg-secondary); }
+.sheet-display-title { color: var(--accent-primary); }
+.sheet-display-border { border-color: var(--border-primary); }
+.sheet-content-text { color: var(--text-primary); }
+
+
+/* Styles pour la fiche de personnage affichée */
+.sheet-section {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-primary);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-secondary);
+}
+.sheet-header {
+    font-weight: 600; color: var(--text-accent);
+    margin-bottom: 0.75rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-secondary);
+    font-size: 1.125rem;
+}
+.sheet-field {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.5rem 0; border-bottom: 1px dashed var(--border-primary);
+}
+.sheet-field:last-child { border-bottom: none; }
+.sheet-field-label { font-weight: 500; color: var(--text-secondary); margin-right: 0.5rem; }
+.sheet-field-value { color: var(--text-primary); font-weight: 600; }
+.sheet-field-modifier { color: var(--accent-secondary); /* Teal in dark, lighter blue in light */ }
+
+body[data-theme="light"] .sheet-field-modifier { color: #0d9488; /* teal-600 for light theme */ }
+
+
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+.grid-container > div { background-color: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+body[data-theme="dark"] .grid-container > div { box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+
+
+.ability-scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.ability-score {
+    background-color: var(--bg-tertiary); border: 1px solid var(--border-secondary);
+    border-radius: 0.375rem; padding: 0.75rem; text-align: center;
+}
+.ability-score .sheet-field-value { font-size: 1.25rem; color: var(--text-accent); }
+.ability-score .sheet-field-modifier { font-size: 1.125rem; color: var(--accent-secondary); }
+
+.skills-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+.skill {
+    display: flex; align-items: center; background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-secondary); border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem; transition: background-color 0.2s;
+}
+.skill:hover { background-color: var(--bg-quaternary); }
+.skill-proficiency { margin-right: 0.75rem; transform: scale(1.1); accent-color: var(--accent-primary); cursor: pointer; }
+.skill-name { flex-grow: 1; font-weight: 500; color: var(--text-primary); }
+.skill-modifier { font-weight: 600; color: var(--text-accent); min-width: 30px; text-align: right; }
+
+.skill.background-proficiency { background-color: var(--accent-primary); border-color: var(--accent-secondary); }
+body[data-theme="dark"] .skill.background-proficiency { background-color: #0e7490; border-color: #06b6d4;} /* Keep specific for dark if needed */
+body[data-theme="light"] .skill.background-proficiency { background-color: #0ea5e9; border-color: #38bdf8;}
+
+.skill.background-proficiency .skill-name,
+.skill.background-proficiency .skill-modifier { color: var(--button-primary-text); font-weight: 600; }
+
+#background.background-selected-color { background-color: var(--accent-primary) !important; color: var(--button-primary-text) !important; font-weight: bold; }
+body[data-theme="dark"] #background.background-selected-color { background-color: #155e75 !important; color: #ecfeff !important; }
+
+
+/* Styles pour la modale */
+.modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+    overflow: auto; background-color: var(--modal-overlay-bg);
+    justify-content: center; align-items: center; padding: 1rem;
+}
+.modal-content {
+    background-color: var(--bg-secondary); margin: auto; padding: 2rem;
+    border: 1px solid var(--border-primary); width: 90%; max-width: 500px;
+    border-radius: 0.75rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center; position: relative; animation: fadeInModal 0.3s ease-out;
+}
+body[data-theme="dark"] .modal-content { box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+@keyframes fadeInModal { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+.modal-text { color: var(--text-primary); }
+.close-button {
+    color: var(--text-secondary); position: absolute; top: 1rem; right: 1rem;
+    font-size: 1.75rem; font-weight: bold; background: none; border: none;
+    cursor: pointer; line-height: 1; padding: 0.25rem;
+}
+.close-button:hover { color: var(--text-primary); }
+
+/* Boutons généraux */
+.button {
+    display: inline-block; font-weight: 600; padding: 0.625rem 1.25rem;
+    border-radius: 0.375rem; text-align: center; cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, color 0.2s ease; border: none;
+}
+.button:hover { transform: translateY(-1px); }
+.button:active { transform: translateY(0); }
+
+.primary-button { background-color: var(--button-primary-bg); color: var(--button-primary-text); }
+.primary-button:hover { background-color: var(--button-primary-hover-bg); }
+body[data-theme="dark"] .primary-button { box-shadow: 0 2px 5px rgba(14, 165, 233, 0.3); }
+
+
+.secondary-button { background-color: var(--button-secondary-bg); color: var(--button-secondary-text); }
+.secondary-button:hover { background-color: var(--button-secondary-hover-bg); }
+
+/* Boutons HP/PV et Repos */
+.hp-button {
+    background-color: var(--button-secondary-bg); color: var(--button-secondary-text);
+    border: 1px solid var(--border-secondary); border-radius: 0.375rem;
+    padding: 0.375rem 0.75rem; cursor: pointer; font-size: 0.875rem;
+    margin: 0 0.25rem; transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.hp-button:hover { background-color: var(--button-secondary-hover-bg); transform: translateY(-1px); }
+.hp-button:active { transform: translateY(0); }
+
+#short-rest-button, #long-rest-button { margin-top: 0.5rem; }
+#death-save-button {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+    margin-top: 0.5rem;
+}
+#death-save-button:hover { background-color: var(--danger-hover-bg); }
+
+
+/* Jets de sauvegarde (affichage) */
+.save-result { /* This class was removed from HTML, but kept for reference if needed elsewhere */
+    width: 50px; text-align: center; border: 1px solid var(--border-secondary);
+    border-radius: 0.25rem; background-color: var(--bg-secondary);
+    font-weight: bold; color: var(--text-secondary); padding: 0.25rem;
+}
+/* Jets de sauvegarde contre la mort (icônes) */
+.death-save-icons { display: flex; justify-content: center; margin-top: 0.75rem; gap: 0.5rem; }
+.death-icon { font-size: 1.5rem; }
+.heart-icon { color: #f43f5e; /* rose-500 - universal */ }
+.skull-icon { color: #a16207; /* yellow-700 for dark, maybe change for light? */ }
+body[data-theme="light"] .skull-icon { color: #7f1d1d; /* red-900 for light */ }
+
+
+/* Overlay pour animation de jet de sauvegarde contre la mort */
+#death-save-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--modal-overlay-bg); /* Using modal overlay for consistency */
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1001; opacity: 0; transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+#death-save-overlay.show { opacity: 1; pointer-events: auto; }
+#death-save-overlay.fade-out { opacity: 0; pointer-events: none; }
+
+.death-save-result { /* Class for the number display inside overlay */
+    font-size: clamp(4rem, 15vw, 8rem); color: var(--text-primary); font-weight: bold;
+    text-shadow: 0 0 15px var(--accent-primary), 0 0 30px var(--accent-secondary);
+    animation: pulseAndFadeIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+body[data-theme="dark"] .death-save-result { text-shadow: 0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,0,0,0.7); }
+
+
+/* STYLES POUR LES BOUTONS DE DÉS */
+.dice-button {
+    background-color: var(--dice-button-bg);
+    color: var(--dice-button-text);
+    border: 1px solid var(--dice-button-border);
+    border-radius: 0.375rem; padding: 0.5rem; font-size: 1rem; font-weight: 600;
+    line-height: 1; text-align: center; cursor: pointer;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 1px rgba(0, 0, 0, 0.1),
+                0 2px 3px rgba(0,0,0,0.15);
+    transition: all 0.15s ease-out;
+    width: 56px; height: 56px; display: flex; justify-content: center; align-items: center;
+    overflow: hidden; position: relative;
+}
+.dice-button:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), inset 0 -1px 1px rgba(0, 0, 0, 0.1),
+                0 4px 6px rgba(0,0,0,0.2);
+}
+.dice-button:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.dice-button.primary-dice {
+    background-color: var(--dice-button-primary-bg);
+    color: var(--dice-button-primary-text);
+    border-color: var(--dice-button-primary-border);
+}
+
+/* Advantage/Disadvantage Toggles */
+.adv-disadv-container { background-color: var(--bg-tertiary); }
+.adv-disadv-label { color: var(--text-secondary); }
+.adv-disadv-label:hover { color: var(--accent-primary); }
+.adv-disadv-divider { border-color: var(--border-secondary); }
+
+
+/* Checkbox custom pour Avantage/Désavantage et Compétences */
+.form-checkbox-custom {
+    appearance: none; width: 1.25rem; height: 1.25rem;
+    border: 2px solid var(--border-tertiary); border-radius: 0.25rem;
+    background-color: var(--bg-secondary); cursor: pointer; position: relative;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.form-checkbox-custom:checked { background-color: var(--accent-primary); border-color: var(--accent-secondary); }
+.form-checkbox-custom:checked::after {
+    content: '✓'; color: var(--button-primary-text); font-size: 0.875rem; font-weight: bold;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+.form-checkbox-custom:focus { outline: none; box-shadow: 0 0 0 3px var(--accent-shadow); }
+
+/* Overlay pour animation de lancer de dés */
+.dice-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--modal-overlay-bg); /* Consistent overlay */
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 1002; opacity: 0; pointer-events: none; transition: opacity 0.3s ease-in-out;
+}
+.dice-overlay.show { opacity: 1; pointer-events: auto; }
+
+.dice-result-text { /* Renamed from .dice-result to avoid conflict */
+    font-size: clamp(5rem, 20vw, 10rem); color: var(--text-primary); font-weight: bold;
+    text-shadow: 0 0 20px var(--accent-primary), 0 0 30px var(--accent-secondary);
+    animation: diceRollAnimation 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+body[data-theme="dark"] .dice-result-text { text-shadow: 0 0 20px var(--accent-primary), 0 0 30px var(--accent-secondary); }
+
+
+.dice-label-text { /* Renamed from .dice-label */
+    font-size: clamp(1rem, 4vw, 1.75rem); color: var(--text-secondary);
+    margin-top: 1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+body[data-theme="dark"] .dice-label-text { text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+@keyframes diceRollAnimation {
+    0% { transform: scale(0.3) rotate(-180deg); opacity: 0; }
+    60% { transform: scale(1.2) rotate(20deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Styles pour les Toasts */
+#toast-container {
+    position: fixed; bottom: 1rem; left: 1rem; z-index: 1005;
+    display: flex; flex-direction: column; align-items: flex-start;
+}
+.toast {
+    background-color: var(--toast-bg); color: var(--toast-text);
+    padding: 0.75rem 1.25rem; border-radius: 0.375rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    opacity: 0; transform: translateX(-100%);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    margin-bottom: 0.5rem; max-width: 300px; font-size: 0.875rem;
+}
+.toast.show { opacity: 1; transform: translateX(0); }
+
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+    .grid-container { grid-template-columns: 1fr; }
+    .ability-scores { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    .skills-section { grid-template-columns: 1fr; }
+    #dice-roller-controls { bottom: 1rem; right: 1rem; }
+    .dice-button { width: 48px; height: 48px; font-size: 0.875rem; }
+    #toast-container { left: 0.5rem; bottom: 0.5rem; right: 0.5rem; align-items: center; }
+    .toast { max-width: calc(100% - 1rem); margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 480px) {
+    body { padding: 0.5rem; }
+    header h1 { font-size: 1.75rem; /* Adjusted from 2.25rem for smaller screens */ }
+    #character-form, #character-sheet-display { padding: 0.75rem; /* Adjusted from 1rem */ }
+    .dice-button { width: 44px; height: 44px; font-size: 0.8rem; }
+    #dice-roller-controls #dice-buttons-grid { gap: 0.25rem; }
+}
+
+.hidden { display: none !important; }
+
+/* Styles pour sr-only (accessibilité) */
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}

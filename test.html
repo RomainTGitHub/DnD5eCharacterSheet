@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créateur de Fiche de Personnage D&D 5e</title>
+    <link rel="icon" href="/logo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" xintegrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-theme="dark">
+    <button id="theme-toggle" title="Changer de thème" class="fixed top-4 right-4 z-[100] p-2 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200">
+        </button>
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 min-h-screen">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold header-title"><i class="fas fa-dice-d20 mr-2"></i>Fiche de personnage D&D 5e</h1>
+            <p class="header-subtitle">Forgez votre légende, un dé à la fois.</p>
+        </header>
+
+        <form id="character-form" class="form-container shadow-xl rounded-xl p-6 sm:p-8 mb-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4">
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="name">
+                    Nom du Personnage
+                </label>
+                <input class="form-input" id="name" type="text" placeholder="Ex: Elara Cœurdefer">
+            </div>
+
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="race">
+                    Race
+                </label>
+                <select class="form-select" id="race">
+                    <option value="" disabled selected>Sélectionner une race</option>
+                    <option value="Aasimar">Aasimar</option>
+                    <option value="Drakéide">Drakéide</option>
+                    <option value="Elfe">Elfe</option>
+                    <option value="Gnome">Gnome</option>
+                    <option value="Goliath">Goliath</option>
+                    <option value="Halfelin">Halfelin</option>
+                    <option value="Humain">Humain</option>
+                    <option value="Nain">Nain</option>
+                    <option value="Orc">Orc</option>
+                    <option value="Tieffelin">Tieffelin</option>
+                </select>
+            </div>
+
+            <div id="draconic-ancestry-container" class="hidden">
+                <label class="block form-label text-sm font-semibold mb-2" for="draconic-ancestry">
+                    Ascendance Draconique
+                </label>
+                <select class="form-select" id="draconic-ancestry">
+                    <option value="" disabled selected>Sélectionner une ascendance</option>
+                    <option value="Noir (Acide)">Noir (Acide)</option>
+                    <option value="Cuivre (Acide)">Cuivre (Acide)</option>
+                    <option value="Rouge (Feu)">Rouge (Feu)</option>
+                    <option value="Airain (Feu)">Airain (Feu)</option>
+                    <option value="Or (Feu)">Or (Feu)</option>
+                    <option value="Bleu (Foudre)">Bleu (Foudre)</option>
+                    <option value="Bronze (Foudre)">Bronze (Foudre)</option>
+                    <option value="Argent (Froid)">Argent (Froid)</option>
+                    <option value="Blanc (Froid)">Blanc (Froid)</option>
+                    <option value="Vert (Poison)">Vert (Poison)</option>
+                </select>
+            </div>
+
+            <div id="elven-lineage-container" class="hidden">
+                <label class="block form-label text-sm font-semibold mb-2" for="elven-lineage">
+                    Lignage Elfique
+                </label>
+                <select class="form-select" id="elven-lineage">
+                    <option value="" disabled selected>Sélectionner un lignage</option>
+                    <option value="Haut Elfe">Haut Elfe</option>
+                    <option value="Elfe Sylvestre">Elfe Sylvestre</option>
+                    <option value="Drow">Drow</option>
+                </select>
+            </div>
+
+            <div id="gnome-lineage-container" class="hidden">
+                <label class="block form-label text-sm font-semibold mb-2" for="gnome-lineage">
+                    Lignage Gnome
+                </label>
+                <select class="form-select" id="gnome-lineage">
+                    <option value="" disabled selected>Sélectionner un lignage</option>
+                    <option value="Gnome des Forêts">Gnome des Forêts</option>
+                    <option value="Gnome des Roches">Gnome des Roches</option>
+                </select>
+            </div>
+
+            <div id="giant-ancestry-container" class="hidden">
+                <label class="block form-label text-sm font-semibold mb-2" for="giant-ancestry">
+                    Ascendance Gigante
+                </label>
+                <select class="form-select" id="giant-ancestry">
+                    <option value="" disabled selected>Sélectionner une ascendance</option>
+                    <option value="Géant du Givre">Géant du Givre</option>
+                    <option value="Géant du Feu">Géant du Feu</option>
+                    <option value="Géant des Collines">Géant des Collines</option>
+                    <option value="Géant des Nuages">Géant des Nuages</option>
+                    <option value="Géant des Pierres">Géant des Pierres</option>
+                    <option value="Géant des Tempêtes">Géant des Tempêtes</option>
+                </select>
+            </div>
+
+            <div id="fiendish-heritage-container" class="hidden">
+                <label class="block form-label text-sm font-semibold mb-2" for="fiendish-heritage">
+                    Héritage Fiélon
+                </label>
+                <select class="form-select" id="fiendish-heritage">
+                    <option value="" disabled selected>Sélectionner un héritage</option>
+                    <option value="Abyssale">Abyssale</option>
+                    <option value="Chtonien">Chtonien</option>
+                    <option value="Infernal">Infernal</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="class">
+                    Classe
+                </label>
+                <select class="form-select" id="class">
+                    <option value="" disabled selected>Sélectionner une classe</option>
+                    <option value="Barbare">Barbare</option>
+                    <option value="Barde">Barde</option>
+                    <option value="Clerc">Clerc</option>
+                    <option value="Druide">Druide</option>
+                    <option value="Guerrier">Guerrier</option>
+                    <option value="Moine">Moine</option>
+                    <option value="Paladin">Paladin</option>
+                    <option value="Rôdeur">Rôdeur</option>
+                    <option value="Ensorceleur">Ensorceleur</option>
+                    <option value="Magicien">Magicien</option>
+                    <option value="Occultiste">Occultiste</option>
+                    <option value="Roublard">Roublard</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="level">
+                    Niveau
+                </label>
+                <select class="form-select" id="level">
+                    </select>
+            </div>
+
+            <div id="subclass-container" class="hidden">
+                <label class="block form-label text-sm font-semibold mb-2" for="subclass">
+                    Sous-classe
+                </label>
+                <select class="form-select" id="subclass">
+                    <option value="" disabled selected>Sélectionner une sous-classe</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="alignment">
+                    Alignement
+                </label>
+                <select class="form-select" id="alignment">
+                    <option value="" disabled selected>Sélectionner un alignement</option>
+                    <option value="Loyal Bon">Loyal Bon</option>
+                    <option value="Neutre Bon">Neutre Bon</option>
+                    <option value="Chaotique Bon">Chaotique Bon</option>
+                    <option value="Loyal Neutre">Loyal Neutre</option>
+                    <option value="Neutre">Neutre</option>
+                    <option value="Chaotique Neutre">Chaotique Neutre</option>
+                    <option value="Loyal Mauvais">Loyal Mauvais</option>
+                    <option value="Neutre Mauvais">Neutre Mauvais</option>
+                    <option value="Chaotique Mauvais">Chaotique Mauvais</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="background">
+                    Historique
+                </label>
+                <select class="form-select" id="background">
+                    <option value="" disabled selected>Sélectionner un historique</option>
+                    <option value="Acolyte">Acolyte</option>
+                    <option value="Artiste">Artiste</option>
+                    <option value="Artisan">Artisan</option>
+                    <option value="Charlatan">Charlatan</option>
+                    <option value="Criminel">Criminel</option>
+                    <option value="Ermite">Ermite</option>
+                    <option value="Fermier">Fermier</option>
+                    <option value="Garde">Garde</option>
+                    <option value="Guide">Guide</option>
+                    <option value="Marin">Marin</option>
+                    <option value="Marchand">Marchand</option>
+                    <option value="Noble">Noble</option>
+                    <option value="Sage">Sage</option>
+                    <option value="Scribe">Scribe</option>
+                    <option value="Soldat">Soldat</option>
+                    <option value="Voyageur">Voyageur</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="size">
+                    Taille
+                </label>
+                <select class="form-select" id="size">
+                    <option value="Très Petite">Très Petite</option>
+                    <option value="Petite">Petite</option>
+                    <option value="Moyenne" selected>Moyenne</option>
+                    <option value="Grande">Grande</option>
+                    <option value="Très Grande">Très Grande</option>
+                    <option value="Gigantesque">Gigantesque</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="experience">
+                    Points d'Expérience (XP)
+                </label>
+                <input class="form-input" id="experience" type="number" value="0" min="0">
+                <p class="text-xs form-label-secondary mt-1">XP pour niveau suivant: <span id="next-level-xp" class="font-semibold text-accent">0</span></p>
+            </div>
+
+            <div>
+                <label class="block form-label text-sm font-semibold mb-2" for="initial-armor-class">
+                    Classe d'Armure (CA)
+                </label>
+                <input class="form-input" id="initial-armor-class" type="number" value="10" min="0">
+            </div>
+
+            <div class="sm:col-span-2 md:col-span-3 mt-4">
+                <h3 class="text-xl font-semibold form-label-accent mb-3 border-b form-border-secondary pb-2"><i class="fas fa-shield-alt mr-2"></i>Caractéristiques</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div>
+                        <label class="block form-label text-sm font-semibold mb-1 capitalize" for="strength">Force</label>
+                        <select class="form-select" id="strength"></select>
+                    </div>
+                    <div>
+                        <label class="block form-label text-sm font-semibold mb-1 capitalize" for="dexterity">Dextérité</label>
+                        <select class="form-select" id="dexterity"></select>
+                    </div>
+                    <div>
+                        <label class="block form-label text-sm font-semibold mb-1 capitalize" for="constitution">Constitution</label>
+                        <select class="form-select" id="constitution"></select>
+                    </div>
+                    <div>
+                        <label class="block form-label text-sm font-semibold mb-1 capitalize" for="intelligence">Intelligence</label>
+                        <select class="form-select" id="intelligence"></select>
+                    </div>
+                    <div>
+                        <label class="block form-label text-sm font-semibold mb-1 capitalize" for="wisdom">Sagesse</label>
+                        <select class="form-select" id="wisdom"></select>
+                    </div>
+                    <div>
+                        <label class="block form-label text-sm font-semibold mb-1 capitalize" for="charisma">Charisme</label>
+                        <select class="form-select" id="charisma"></select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elf Specific Choices - Moved here to be part of the form -->
+            <div id="elf-specific-choices-container" class="hidden sm:col-span-2 md:col-span-3 mt-4">
+                <h3 class="text-xl font-semibold form-label-accent mb-3 border-b form-border-secondary pb-2"><i class="fas fa-hat-wizard mr-2"></i>Choix Elfiques</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block form-label text-sm font-semibold mb-2" for="elf-keen-senses">
+                            Sens Aiguisés (Compétence)
+                        </label>
+                        <select class="form-select" id="elf-keen-senses">
+                            <option value="" disabled selected>Choisir une compétence</option>
+                            <option value="Perception">Perception</option>
+                            <option value="Perspicacité">Perspicacité</option>
+                            <option value="Survie">Survie</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block form-label text-sm font-semibold mb-2" for="elf-spellcasting-ability">
+                            Caractéristique d'Incantation (Lignage Elfique)
+                        </label>
+                        <select class="form-select" id="elf-spellcasting-ability">
+                            <option value="" disabled selected>Choisir une caractéristique</option>
+                            <option value="Intelligence">Intelligence</option>
+                            <option value="Sagesse">Sagesse</option>
+                            <option value="Charisme">Charisme</option>
+                        </select>
+                    </div>
+                    <div id="high-elf-cantrip-container" class="hidden">
+                        <label class="block form-label text-sm font-semibold mb-2" for="high-elf-cantrip">
+                            Sort Mineur (Haut Elfe)
+                        </label>
+                        <select class="form-select" id="high-elf-cantrip">
+                            <option value="" disabled selected>Choisir un sort mineur</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- End Elf Specific Choices -->
+
+        </form>
+
+        <div id="character-sheet-display" class="mt-8 sheet-display-container shadow-xl rounded-xl p-6 sm:p-8">
+            <h2 class="text-2xl font-bold sheet-display-title mb-6 text-center border-b sheet-display-border pb-3"><i class="fas fa-scroll mr-2"></i>Aperçu de la Fiche</h2>
+            <div id="sheet-content" class="sheet-content-text">
+                 <p class="text-center text-slate-500">Remplissez le formulaire pour voir les détails de votre personnage ici.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="level-up-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" aria-label="Fermer la modale">&times;</button>
+            <p id="level-up-message" class="text-lg modal-text mb-6"></p>
+            <button id="level-up-confirm" class="button primary-button w-full" type="button">Confirmer</button>
+        </div>
+    </div>
+
+    <div id="dice-roller-controls" class="fixed bottom-4 right-4 flex flex-col items-end space-y-3 z-50">
+        <div id="dice-buttons-grid" class="grid grid-cols-1 gap-2">
+            <button id="roll-d4" class="dice-button w-full" title="Lancer un d4">d4</button>
+            <button id="roll-d6" class="dice-button w-full" title="Lancer un d6">d6</button>
+            <button id="roll-d8" class="dice-button w-full" title="Lancer un d8">d8</button>
+            <button id="roll-d10" class="dice-button w-full" title="Lancer un d10">d10</button>
+            <button id="roll-d12" class="dice-button w-full" title="Lancer un d12">d12</button>
+            <button id="roll-d20" class="dice-button w-full primary-dice" title="Lancer un d20">d20</button>
+            <button id="roll-d100" class="dice-button w-full" title="Lancer un d100">d100</button>
+        </div>
+        <div id="advantage-disadvantage-toggles" class="adv-disadv-container p-3 rounded-lg shadow-lg flex items-center space-x-3 w-full justify-center">
+            <label for="advantage-toggle" class="flex items-center cursor-pointer text-sm adv-disadv-label hover:text-sky-400 transition-colors">
+                <input type="checkbox" id="advantage-toggle" class="form-checkbox-custom">
+                <span class="ml-2">Avantage</span>
+            </label>
+            <div class="adv-disadv-divider h-5"></div>
+            <label for="disadvantage-toggle" class="flex items-center cursor-pointer text-sm adv-disadv-label hover:text-sky-400 transition-colors">
+                <input type="checkbox" id="disadvantage-toggle" class="form-checkbox-custom">
+                <span class="ml-2">Désavantage</span>
+            </label>
+        </div>
+    </div>
+
+    <div id="dice-roll-overlay" class="dice-overlay">
+        <div id="dice-roll-result" class="dice-result-text"></div>
+        <div id="dice-roll-label" class="dice-label-text"></div>
+    </div>
+
+    <div id="toast-container" class="fixed bottom-4 left-4 z-[1005] flex flex-col items-start space-y-2">
+        </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
