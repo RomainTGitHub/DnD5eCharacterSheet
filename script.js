@@ -94,40 +94,40 @@ const backgroundProficiencies = {
         tools: ["Matériel de contrefaçon"]
     },
     "Criminel": {
-        tools: ["Outil de voleur"]
+        tools: ["Outils de voleur"]
     },
     "Ermite": {
-        tools: ["Outil d'herboriste"]
+        tools: ["Outils d'herboriste"]
     },
     "Fermier": {
-        tools: ["Outil de charpentier"]
+        tools: ["Outils de charpentier"]
     },
     "Garde": {
         tools: ["Un type de jeu de société de votre choix"]
     },
     "Guide": {
-        tools: ["Outil de cartographe"]
+        tools: ["Outils de cartographe"]
     },
     "Marin": {
-        tools: ["Outil de navigateur"]
+        tools: ["Outils de navigateur"]
     },
     "Marchand": {
-        tools: ["Outil de navigateur"]
+        tools: ["Outils de navigateur"]
     },
     "Noble": {
         tools: ["Un jeu de société de votre choix"]
     },
     "Sage": {
-        tools: ["Outil de calligraphe"]
+        tools: ["Outils de calligraphe"]
     },
     "Scribe": {
-        tools: ["Outil de calligraphe"]
+        tools: ["Outils de calligraphe"]
     },
     "Soldat": {
         tools: ["Un jeu de société de votre choix"]
     },
     "Voyageur": {
-        tools: ["Outil de voleur"]
+        tools: ["Outils de voleur"]
     },
 };
 
