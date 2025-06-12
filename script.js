@@ -320,6 +320,46 @@ const wizardCantrips = [
 ];
 
 
+// ***** NOUVELLES DONNÉES : APTITUDES DE CLASSE ET SOUS-CLASSE *****
+const classFeatures = {
+    "Barbare": {
+        1: [
+            { name: "Rage", description: "Vous pouvez vous animer d'une force primitive appelée Rage, qui vous investit d'une puissance et d'une résistance accrues. Vous pouvez entrer en Rage, par une action Bonus, si vous ne portez pas d'armure lourde. <br> Vous pouvez entrer en Rage 2 fois par jour ( selon le niveau ). Vous en regagnez une utilisation lorsque vous terminez un Repos court, et récupérez tout le quota en terminant un Repos long. <br> Tant que votre Rage est active, les règles suivantes s'appliquent.<br><br> <strong>Résistance aux dégâts.</strong> Vous bénéficiez de la Résistance aux dégâts contondants, perforants et tranchants.<br><br> <strong> Dégâts de Rage. </strong> Lorsque vous effectuez une attaque basée sur la Force, que ce soit avec une arme ou à mains nues, et que vous infligez des dégâts à la cible, vous bénéficiez pour ces dégâts d'un bonus de +2 dégâts de rage (selon le niveau) . <br><br> <strong> Avantage en Force.</strong> Vous avez l'Avantage aux tests de Force et aux jets de sauvegarde de Force. <br><br> <strong> Ni Concentration ni sorts. </strong> Vous ne pouvez pas maintenir votre Concentration ni lancer de sorts. <br><br> <strong> Durée. </strong> La Rage persiste jusqu'à la fin de votre tour suivant, mais se termine prématurément si vous enfilez une armure lourde ou subissez l'état Neutralisé. Si votre Rage est encore active lorsque votre tour suivant intervient, vous pouvez la prolonger d'un round par n'importe laquelle des choses suivantes: <br><br>• Effectuer un jet d'attaque contre un ennemi. <br><br>• Contraindre un ennemi à effectuer un jet de sauvegarde. <br><br>• Entreprendre une action Bonus pour prolonger votre Rage. <br><br> Chaque fois que la Rage est prolongée, elle persiste jusqu'à la fin de votre tour suivant. <br> Vous pouvez maintenir votre Rage pendant un maximum de 10 minutes." },
+            { name: "Défense sans armure", description: "Tant que vous ne portez aucune armure, votre Classe d'Armure est égale à 10 + votre modificateur de Dextérité + votre modificateur de Constitution. <br> Vous pouvez utiliser un bouclier et bénéficier quand même de cet avantage." }
+        ],
+        2: [
+            { name: "Attaque téméraire", description: "Vous pouvez décider de faire vos attaques de corps à corps avec avantage. Si vous le faites, les attaques contre vous ont l'avantage jusqu'à votre prochain tour." },
+            { name: "Sens du danger", description: "Vous avez l'avantage aux jets de sauvegarde de Dextérité contre les effets que vous pouvez voir, comme les pièges et les sorts." }
+        ],
+        3: [{ name: "Voie primitive", description: "Vous choisissez une voie qui façonne la nature de votre rage. (Sélectionnez une sous-classe)." }],
+        4: [{ name: "Amélioration de caractéristiques", description: "Vous pouvez augmenter une caractéristique de 2 points, ou deux caractéristiques de 1 point." }],
+        5: [
+            { name: "Attaque supplémentaire", description: "Vous pouvez attaquer deux fois, au lieu d'une, chaque fois que vous réalisez l'action Attaquer durant votre tour." },
+            { name: "Déplacement rapide", description: "Votre vitesse augmente de 3 mètres tant que vous ne portez pas d'armure lourde." }
+        ],
+        7: [{ name: "Instinct sauvage", description: "Vous avez l'avantage sur les jets d'initiative." }],
+        9: [{ name: "Critique brutal", description: "Vous pouvez lancer un dé de dégâts d'arme supplémentaire lorsque vous déterminez les dégâts supplémentaires pour un coup critique avec une attaque de corps à corps." }],
+        11: [{ name: "Rage implacable", description: "Si vous tombez à 0 point de vie alors que vous êtes en rage et que vous ne mourez pas sur le coup, vous pouvez faire un jet de sauvegarde de Constitution DD 10. Si vous réussissez, vous tombez à 1 point de vie à la place." }],
+        13: [{ name: "Critique brutal (Amélioration)", description: "Vous pouvez lancer deux dés de dégâts d'arme supplémentaires." }],
+        15: [{ name: "Rage persistante", description: "Votre rage ne prend fin prématurément que si vous tombez inconscient ou si vous choisissez d'y mettre fin." }],
+        17: [{ name: "Critique brutal (Amélioration)", description: "Vous pouvez lancer trois dés de dégâts d'arme supplémentaires." }],
+        18: [{ name: "Puissance indomptable", description: "Si le total de votre test de Force est inférieur à votre valeur de Force, vous pouvez utiliser votre valeur de Force à la place du résultat." }],
+        20: [{ name: "Champion primitif", description: "Vos valeurs de Force et de Constitution augmentent de 4. Votre maximum pour ces caractéristiques est maintenant de 24." }]
+    },
+    // Ajoutez ici les autres classes...
+};
+
+const subclassFeatures = {
+    "Voie du Berserker": {
+        3: [{ name: "Frénésie", description: "Quand vous êtes en rage, vous pouvez choisir d'entrer en frénésie. Si vous le faites, vous pouvez faire une seule attaque avec une arme de corps à corps en tant qu'action bonus à chacun de vos tours après celui-ci. Quand votre rage prend fin, vous subissez un niveau d'épuisement." }],
+        6: [{ name: "Rage aveugle", description: "Vous ne pouvez pas être charmé ou effrayé tant que vous êtes en rage." }],
+        10: [{ name: "Présence intimidante", description: "Vous pouvez utiliser votre action pour effrayer quelqu'un avec votre présence menaçante." }],
+        14: [{ name: "Rétorsion", description: "Quand vous subissez des dégâts d'une créature qui est à 1,50 mètre ou moins de vous, vous pouvez utiliser votre réaction pour faire une attaque avec une arme de corps à corps contre cette créature." }]
+    },
+    // Ajoutez ici les autres sous-classes...
+};
+
+
 // Variables globales
 let skillProficiencyStates = {};
 let inspirationChecked = false;
@@ -365,6 +405,17 @@ function getDamageTypeFromAncestry(ancestryValue) {
 function getXpForNextLevel(level) {
     return level < xpLevels.length - 1 ? xpLevels[level] : "Niveau Max";
 }
+
+// ***** NOUVELLE FONCTION : UTILISATIONS DE LA RAGE DU BARBARE *****
+function getBarbarianRageUses(level) {
+    if (level >= 17) return 6;
+    if (level >= 13) return 5;
+    if (level >= 6) return 4;
+    if (level >= 3) return 3;
+    if (level >= 1) return 2;
+    return 0; // Default case
+}
+
 
 function updateSubclasses() {
     const classSelect = document.getElementById('class');
@@ -1296,6 +1347,56 @@ function updateCharacterSheet() {
             </div>
         `;
     }
+
+    // ***** NOUVELLE LOGIQUE : GÉNÉRATION DES APTITUDES DE CLASSE *****
+    let classFeaturesHtmlOutput = [];
+    if (className && classFeatures[className]) {
+        // Collecter toutes les caractéristiques uniques jusqu'au niveau actuel
+        const collectedFeatures = new Map();
+        for (let i = 1; i <= level; i++) {
+            // Aptitudes de la classe principale
+            if (classFeatures[className][i]) {
+                classFeatures[className][i].forEach(feature => {
+                    // Pour les caractéristiques qui s'améliorent (comme Critique brutal), nous ne voulons afficher que la dernière version.
+                    // Pour les autres, nous les ajoutons simplement.
+                    collectedFeatures.set(feature.name, { ...feature, level: i, source: className });
+                });
+            }
+            // Aptitudes de la sous-classe
+            if (subclassValue && subclassFeatures[subclassValue] && subclassFeatures[subclassValue][i]) {
+                subclassFeatures[subclassValue][i].forEach(feature => {
+                    collectedFeatures.set(feature.name, { ...feature, level: i, source: subclassValue });
+                });
+            }
+        }
+        
+        classFeaturesHtmlOutput = Array.from(collectedFeatures.values());
+    }
+    
+    const finalClassFeaturesHtml = classFeaturesHtmlOutput.length > 0
+        ? classFeaturesHtmlOutput.map(feature => {
+            let featureDescription = feature.description;
+            // ***** MODIFICATION DYNAMIQUE DE LA RAGE *****
+            if (feature.name === 'Rage' && className === 'Barbare') {
+                const rageUses = getBarbarianRageUses(level);
+                featureDescription = feature.description
+                    .replace(
+                        'Vous pouvez entrer en Rage 2 fois par jour ( selon le niveau ).', 
+                        `Vous pouvez entrer en Rage <strong>${rageUses} fois</strong>.`
+                    )
+                    .replace(
+                        'Vous en regagnez une utilisation lorsque vous terminez un Repos court, et récupérez tout le quota en terminant un Repos long.',
+                        'Vous regagnez toutes les utilisations dépensées après un repos long.'
+                    );
+            }
+
+            return `
+            <div class="class-feature mb-3">
+                <h4 class="font-semibold text-lg text-accent">${feature.name} <span class="text-sm font-normal text-secondary">(Niv. ${feature.level} ${feature.source})</span></h4>
+                <p class="text-sm text-secondary">${featureDescription}</p>
+            </div>`
+        }).join('')
+        : '<p class="text-sm text-secondary">Sélectionnez une classe et un niveau pour voir les aptitudes.</p>';
     
     let sheetHTML = `
         <div class="grid-container">
@@ -1402,6 +1503,13 @@ function updateCharacterSheet() {
             <div class="sheet-header">TRAITS RACIAUX</div>
             <div id="racial-traits-content">
                 ${finalRacialTraitsHtml}
+            </div>
+        </div>
+        <!-- ***** SECTION DÉPLACÉE ***** -->
+        <div class="sheet-section" id="class-features-section">
+            <div class="sheet-header">APTITUDES DE CLASSE</div>
+            <div id="class-features-content">
+                ${finalClassFeaturesHtml}
             </div>
         </div>
         <div class="sheet-section" id="equipment-proficiencies-section">
