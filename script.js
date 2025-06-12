@@ -1236,6 +1236,12 @@ function updateCharacterSheet() {
                 ${finalRacialTraitsHtml}
             </div>
         </div>
+        <div class="sheet-section" id="equipment-proficiencies-section">
+            <div class="sheet-header">MAITRISE D'ÉQUIPEMENTS</div>
+            <div id="equipment-proficiencies-content">
+                <p class="text-sm text-secondary">La maîtrise des équipements sera détaillée ici (Armures, Armes, Outils).</p>
+            </div>
+        </div>
     `;
 
     if (sheetContentDiv) sheetContentDiv.innerHTML = sheetHTML;
