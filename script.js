@@ -78,6 +78,60 @@ const classProficiencies = {
     }
 };
 
+// Maîtrises d'équipement par historique
+const backgroundProficiencies = {
+    "Acolyte": {
+        tools: ["Outils de calligraphe"]
+    },
+    // Ajoutez d'autres historiques ici
+    "Artiste": {
+        tools: ["Un instrument de musique de votre choix"]
+    },
+    "Artisan": {
+        tools: ["Un outil d'artisan de votre choix"]
+    },
+    "Charlatan": {
+        tools: ["Matériel de contrefaçon"]
+    },
+    "Criminel": {
+        tools: ["Outil de voleur"]
+    },
+    "Ermite": {
+        tools: ["Outil d'herboriste"]
+    },
+    "Fermier": {
+        tools: ["Outil de charpentier"]
+    },
+    "Garde": {
+        tools: ["Un type de jeu de société de votre choix"]
+    },
+    "Guide": {
+        tools: ["Outil de cartographe"]
+    },
+    "Marin": {
+        tools: ["Outil de navigateur"]
+    },
+    "Marchand": {
+        tools: ["Outil de navigateur"]
+    },
+    "Noble": {
+        tools: ["Un jeu de société de votre choix"]
+    },
+    "Sage": {
+        tools: ["Outil de calligraphe"]
+    },
+    "Scribe": {
+        tools: ["Outil de calligraphe"]
+    },
+    "Soldat": {
+        tools: ["Un jeu de société de votre choix"]
+    },
+    "Voyageur": {
+        tools: ["Outil de voleur"]
+    },
+};
+
+
 // Niveaux d'XP pour chaque niveau de personnage
 const xpLevels = [
     0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
@@ -1192,23 +1246,53 @@ function updateCharacterSheet() {
     }
     
     const finalRacialTraitsHtml = racialTraitsHtmlOutput.length > 0 ? racialTraitsHtmlOutput.map(trait => `<div class="racial-trait mb-3"><h4 class="font-semibold text-lg text-accent">${trait.name}</h4><p class="text-sm text-secondary">${trait.description}</p></div>`).join('') : '<p class="text-sm text-secondary">Aucun trait racial spécifique à afficher pour cette race ou sélection.</p>';
-
+    
     // Générer le HTML pour les maîtrises d'équipement
-    let equipmentProficienciesHtml = '<p class="text-sm text-secondary">Sélectionnez une classe pour voir les maîtrises.</p>';
+    let finalProficiencies = {
+        armor: new Set(),
+        weapons: new Set(),
+        tools: new Set()
+    };
+
+    // Ajouter les maîtrises de classe
     if (className && classProficiencies[className]) {
-        const profs = classProficiencies[className];
+        const classProfs = classProficiencies[className];
+        if(classProfs.armor) classProfs.armor.forEach(p => finalProficiencies.armor.add(p));
+        if(classProfs.weapons) classProfs.weapons.forEach(p => finalProficiencies.weapons.add(p));
+        if(classProfs.tools) classProfs.tools.forEach(p => finalProficiencies.tools.add(p));
+    }
+
+    // Ajouter les maîtrises d'historique
+    if (background && backgroundProficiencies[background]) {
+        const backgroundProfs = backgroundProficiencies[background];
+        if (backgroundProfs.armor) backgroundProfs.armor.forEach(p => finalProficiencies.armor.add(p));
+        if (backgroundProfs.weapons) backgroundProfs.weapons.forEach(p => finalProficiencies.weapons.add(p));
+        if (backgroundProfs.tools) backgroundProfs.tools.forEach(p => finalProficiencies.tools.add(p));
+    }
+
+    let equipmentProficienciesHtml = '<p class="text-sm text-secondary">Sélectionnez une classe ou un historique pour voir les maîtrises.</p>';
+
+    const armorArray = Array.from(finalProficiencies.armor);
+    const weaponsArray = Array.from(finalProficiencies.weapons);
+    let toolsArray = Array.from(finalProficiencies.tools);
+
+    if (toolsArray.length > 1) {
+        toolsArray = toolsArray.filter(t => t !== "Aucun");
+    }
+
+    if (armorArray.length > 0 || weaponsArray.length > 0 || (toolsArray.length > 0 && !(toolsArray.length === 1 && toolsArray[0] === "Aucun"))) {
         equipmentProficienciesHtml = `
             <div class="equipment-proficiency-category">
                 <h5 class="font-semibold text-md text-secondary-accent">Armures</h5>
-                <p class="text-sm text-secondary">${profs.armor.join(', ')}</p>
+                <p class="text-sm text-secondary">${armorArray.length > 0 ? armorArray.join(', ') : 'Aucune'}</p>
             </div>
             <div class="equipment-proficiency-category mt-2">
                 <h5 class="font-semibold text-md text-secondary-accent">Armes</h5>
-                <p class="text-sm text-secondary">${profs.weapons.join(', ')}</p>
+                <p class="text-sm text-secondary">${weaponsArray.length > 0 ? weaponsArray.join(', ') : 'Aucune'}</p>
             </div>
             <div class="equipment-proficiency-category mt-2">
                 <h5 class="font-semibold text-md text-secondary-accent">Outils</h5>
-                <p class="text-sm text-secondary">${profs.tools.join(', ')}</p>
+                <p class="text-sm text-secondary">${toolsArray.length > 0 ? toolsArray.join(', ') : 'Aucun'}</p>
             </div>
         `;
     }
