@@ -14,6 +14,70 @@ const subclasses = {
     "Roublard": ["Âme Acérée", "Arnaqueur Arcanique", "Assassin", "Voleur"],
 };
 
+// Maîtrises d'équipement par classe
+const classProficiencies = {
+    "Barbare": {
+        armor: ["Armures légères", "Armures intermédiaires", "Boucliers"],
+        weapons: ["Armes courantes", "Armes de guerre"],
+        tools: ["Aucun"]
+    },
+    "Barde": {
+        armor: ["Armures légères"],
+        weapons: ["Armes courantes"],
+        tools: ["Trois instruments de musique de votre choix"]
+    },
+    "Clerc": {
+        armor: ["Armures légères", "Armures intermédiaires", "Boucliers"],
+        weapons: ["Armes courantes"],
+        tools: ["Aucun"]
+    },
+    "Druide": {
+        armor: ["Armures légères", "Boucliers"],
+        weapons: ["Armes courantes"],
+        tools: ["Outils d'herboriste"]
+    },
+    "Guerrier": {
+        armor: ["Armures légères", "Armures intermédiaires", "Armures lourdes", "Boucliers"],
+        weapons: ["Armes courantes", "Armes de guerre"],
+        tools: ["Aucun"]
+    },
+    "Moine": {
+        armor: ["Aucune"],
+        weapons: ["Armes courantes", "Armes de guerre doté de la propriété légère"],
+        tools: ["Un type d'outils d'artisan ou un instrument de musique de votre choix"]
+    },
+    "Paladin": {
+        armor: ["Armures légères", "Armures intermédiaires", "Armures lourdes", "Boucliers"],
+        weapons: ["Armes courantes", "Armes de guerre"],
+        tools: ["Aucun"]
+    },
+    "Rôdeur": {
+        armor: ["Armures légères", "Armures intermédiaires", "Boucliers"],
+        weapons: ["Armes courantes", "Armes de guerre"],
+        tools: ["Aucun"]
+    },
+    "Ensorceleur": {
+        armor: ["Aucune"],
+        weapons: ["Armes courantes"],
+        tools: ["Aucun"]
+    },
+    "Magicien": {
+        armor: ["Aucune"],
+        weapons: ["Armes courantes"],
+        tools: ["Aucun"]
+    },
+    "Occultiste": {
+        armor: ["Armures légères"],
+        weapons: ["Armes courantes"],
+        tools: ["Aucun"]
+    },
+    "Roublard": {
+        armor: ["Armures légères"],
+        weapons: ["Armes courantes", "Armes de guerre doté de la propriété finesse ou légère"],
+        tools: ["Outils de voleur"]
+    }
+};
+
 // Niveaux d'XP pour chaque niveau de personnage
 const xpLevels = [
     0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
@@ -1129,6 +1193,26 @@ function updateCharacterSheet() {
     
     const finalRacialTraitsHtml = racialTraitsHtmlOutput.length > 0 ? racialTraitsHtmlOutput.map(trait => `<div class="racial-trait mb-3"><h4 class="font-semibold text-lg text-accent">${trait.name}</h4><p class="text-sm text-secondary">${trait.description}</p></div>`).join('') : '<p class="text-sm text-secondary">Aucun trait racial spécifique à afficher pour cette race ou sélection.</p>';
 
+    // Générer le HTML pour les maîtrises d'équipement
+    let equipmentProficienciesHtml = '<p class="text-sm text-secondary">Sélectionnez une classe pour voir les maîtrises.</p>';
+    if (className && classProficiencies[className]) {
+        const profs = classProficiencies[className];
+        equipmentProficienciesHtml = `
+            <div class="equipment-proficiency-category">
+                <h5 class="font-semibold text-md text-secondary-accent">Armures</h5>
+                <p class="text-sm text-secondary">${profs.armor.join(', ')}</p>
+            </div>
+            <div class="equipment-proficiency-category mt-2">
+                <h5 class="font-semibold text-md text-secondary-accent">Armes</h5>
+                <p class="text-sm text-secondary">${profs.weapons.join(', ')}</p>
+            </div>
+            <div class="equipment-proficiency-category mt-2">
+                <h5 class="font-semibold text-md text-secondary-accent">Outils</h5>
+                <p class="text-sm text-secondary">${profs.tools.join(', ')}</p>
+            </div>
+        `;
+    }
+    
     let sheetHTML = `
         <div class="grid-container">
             <div> <div class="sheet-field"><span class="sheet-field-label">Nom:</span><span class="sheet-field-value">${name}</span></div>
@@ -1239,7 +1323,7 @@ function updateCharacterSheet() {
         <div class="sheet-section" id="equipment-proficiencies-section">
             <div class="sheet-header">MAITRISE D'ÉQUIPEMENTS</div>
             <div id="equipment-proficiencies-content">
-                <p class="text-sm text-secondary">La maîtrise des équipements sera détaillée ici (Armures, Armes, Outils).</p>
+                ${equipmentProficienciesHtml}
             </div>
         </div>
     `;
@@ -1428,7 +1512,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (disadvantageToggle) {
         disadvantageToggle.addEventListener('change', () => {
-            if (disadvantageToggle.checked && advantageToggle?.checked) advantageToggle.checked = false; 
+            if (disadvantageToggle.checked && advantageToggle?.checked) disadvantageToggle.checked = false; 
             updateCharacterSheet(); 
         });
     }
