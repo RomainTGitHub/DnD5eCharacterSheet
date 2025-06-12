@@ -416,6 +416,14 @@ function getBarbarianRageUses(level) {
     return 0; // Default case
 }
 
+// ***** NOUVELLE FONCTION : DÉGÂTS DE RAGE DU BARBARE *****
+function getBarbarianRageDamage(level) {
+    if (level >= 16) return 4;
+    if (level >= 9) return 3;
+    if (level >= 1) return 2;
+    return 0; // Default case
+}
+
 
 function updateSubclasses() {
     const classSelect = document.getElementById('class');
@@ -1379,6 +1387,7 @@ function updateCharacterSheet() {
             // ***** MODIFICATION DYNAMIQUE DE LA RAGE *****
             if (feature.name === 'Rage' && className === 'Barbare') {
                 const rageUses = getBarbarianRageUses(level);
+                const rageDamage = getBarbarianRageDamage(level);
                 featureDescription = feature.description
                     .replace(
                         'Vous pouvez entrer en Rage 2 fois par jour ( selon le niveau ).', 
@@ -1387,6 +1396,10 @@ function updateCharacterSheet() {
                     .replace(
                         'Vous en regagnez une utilisation lorsque vous terminez un Repos court, et récupérez tout le quota en terminant un Repos long.',
                         'Vous regagnez toutes les utilisations dépensées après un repos long.'
+                    )
+                    .replace(
+                        `d'un bonus de +2 dégâts de rage (selon le niveau)`,
+                        `d'un bonus de <strong>+${rageDamage}</strong> dégâts de rage`
                     );
             }
 
